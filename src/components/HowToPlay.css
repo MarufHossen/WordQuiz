@@ -1,0 +1,46 @@
+.container{
+    margin-top: 30px;
+    height:60%;
+    background-color: c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.h2{
+    color:#be5ed4 !important;
+}
+.box{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:600px;
+    height:600px;
+    background-color: #be5ed4;
+    border-radius: 15px;
+    color:#efcded;
+}
+.play-btn{
+    background-color: #efcded;
+    color:#333;
+    margin-top: 20px;
+    width:150px;
+ margin-bottom:20px;
+}
+
+
+/* Media query */
+
+@media only screen and (max-width:668px) {
+     .box{
+         width:100%;
+         background-color: transparent;
+         color:#333;
+         text-align: center;
+     }
+     .play-btn{
+         background-color: #be5ed4;
+         color:#fff;
+     }
+}
