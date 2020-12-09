@@ -42,7 +42,6 @@ function QuizTwo({ quizTwoData }) {
     }
     return result;
   }
-
   /**
    * Shuffling the answer string to randomize the letter
    * @returns array
@@ -171,6 +170,7 @@ function QuizTwo({ quizTwoData }) {
                 </button>))}
               </div>
             </div>
+
 
 
             {/* <button className="sign-out" onClick={()=>firebase.auth().signOut()}>Sign Out</button> */}
