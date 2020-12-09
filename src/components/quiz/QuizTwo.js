@@ -51,7 +51,6 @@ function QuizTwo({ quizTwoData }) {
     }
     return result;
   }
-
   /**
    * Shuffling the answer string to randomize the letter
    * @returns array
