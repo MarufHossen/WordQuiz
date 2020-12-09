@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
 .container{
+    font-family: 'Poppins',sans-serif;
     margin-top: 30px;
     height:60%;
-    background-color: c;
+    background-color: #efcded;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 .h2{
     color:#be5ed4 !important;
@@ -16,10 +21,11 @@
     justify-content: center;
     align-items: center;
     width:600px;
-    height:600px;
+    height:500px;
     background-color: #be5ed4;
     border-radius: 15px;
     color:#efcded;
+    margin-bottom:50px;
 }
 .play-btn{
     background-color: #efcded;
@@ -36,7 +42,8 @@
      .box{
          width:100%;
          background-color: transparent;
-         color:#333;
+         color:#be5ed4;
+         font-weight:bold;
          text-align: center;
      }
      .play-btn{

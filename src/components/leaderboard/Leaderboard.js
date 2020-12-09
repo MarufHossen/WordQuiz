@@ -1,7 +1,7 @@
 
 import React,{useState,useEffect} from 'react'
 import './leaderboard.css'
-import {db} from '../Fire'
+import {db} from '../../Fire'
 import {Link} from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 function Leaderboard() {
@@ -15,7 +15,7 @@ function Leaderboard() {
     },[])
     let list=datas.map(data=>data)
      
-
+       console.log(list);
     list.sort(function(a,b){
         return b.score -a.score
     })
@@ -30,13 +30,13 @@ function Leaderboard() {
    
     return (
         <>
-        <Button variant="contained" style={{background:'#be5ed4',width:"200px",marginTop:'20px'}}>
-            <Link to="/leaderboard-2">Leaderboard 2</Link>
+        <Button variant="contained" style={{background:'#be5ed4',width:"200px",marginTop:'20px',marginLeft:'20px'}}>
+            <Link  to="/leaderboard-2">Leaderboard Two</Link>
              </Button>
 
         <div className="table">
         <div className="table-content">
-            <table>
+            <table className="table-1">
                 <thead>
                     <tr>
                     <th>Ranking</th>
@@ -44,13 +44,13 @@ function Leaderboard() {
                 </thead>
                 <tbody>
                     {rankList.map((r)=>(
-                        <tr>
+                        <tr className="tr">
                             <td>{r}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <table>
+            <table className="table-1">
                 <thead> 
                 <tr>
                       
@@ -61,14 +61,15 @@ function Leaderboard() {
                 <tbody> 
 
                 {list.map((data)=>(
-                 
-                            
-         <tr>
-                <td>{data.name}</td>
-                <td>{data.score}</td>  
-                           
-         </tr>
-                ))}
+                
+                                        
+         <tr className="tr">
+             <td>{data.name}</td>
+             <td>{data.score}</td>  
+        </tr> 
+                
+                ) 
+                )}
                 </tbody>
                 
             </table>

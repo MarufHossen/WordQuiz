@@ -1,28 +1,30 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import clsx from 'clsx';
-//firebase
-import {db} from '../Fire'
+ 
+ 
 import {useAuth} from './context/AuthContext'
  
 //component import
 import Home from './Home'
- import QuizOne from './QuizOne'
- import Result from './Result'
- import CountDown from './CountDown'
- import CountDownTwo from './CountDownTwo'
- import Leaderboard from './Leaderboard'
- import LeaderboardTwo from './LeaderboardTwo'
- import Login from './Login';
+ import QuizOne from './quiz/QuizOne'
+ import ResultOne from './result/ResultOne'
+ import ResultTwo from './result/ResultTwo'
+ 
+ import CountDownTwo from './countdown/CountDownTwo'
+ import CountDownOne from './countdown/CountDownOne'
+ import Leaderboard from './leaderboard/Leaderboard'
+ import LeaderboardTwo from './leaderboard/LeaderboardTwo'
+ import LogIn from './Login';
  import UserInfo from './UserInfo'
- import HowToPlay from './HowToPlay'
- import HowToPlayTwo from './HowToPlayTwo'
+ import HowToPlay from './howtoplay/HowToPlay'
+ import HowToPlayTwo from './howtoplay/HowToPlayTwo'
  import SignedInLinks from './SignedInLinks'
  import SignedOutLinks from './SignedOutLinks'
  import SignIn from './auth/SignIn'
  import SignUp from './auth/SignUp'
- import Profile from './Profile'
+ import Profile from './profile/Profile'
 
-import firebase from 'firebase';
+ 
 import {Link,Route} from 'react-router-dom'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -38,8 +40,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import PersonIcon from '@material-ui/icons/Person';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -112,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    
   },
   drawerPaper: {
     width: drawerWidth,
@@ -168,17 +169,17 @@ export default function Nav() {
     setListOpens(!listOpens)
 }
 
-const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+// const handleChange = (event) => {
+//     setAuth(event.target.checked);
+//   };
  
-  const handleClose = () => {
-    setAnchorEl(null);
-  };   
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };   
   
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleMenu = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
    
   const handleClick = (event) => {
     setAnchor(event.currentTarget);
@@ -187,9 +188,9 @@ const handleChange = (event) => {
   const handleCloseBtn = () => {
     setAnchor(null);
   };
-  const handleCloseBtns = () => {
-    setAnchors(null);
-  };
+  // const handleCloseBtns = () => {
+  //   setAnchors(null);
+  // };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -241,26 +242,7 @@ const handleChange = (event) => {
         
       </Menu>
     </div>
-          {/* <div className={ classes.quizButton}>
-      <Button className={classes.quizBtn} aria-controls="simple-menu"  aria-haspopup="true" onClick={handleClick}>
-        Leaderboard
-      </Button> */}
-      {/* <Menu
-        id="simple-menu"
-        anchorEls={anchors}
-        keepMounted
-        open={Boolean(anchors)}
-        onClose={handleCloseBtns}
-      >
-        <MenuItem onClick={handleCloseBtns}>
-        <Link className={classes.linkMenu} to="/leaderboard">Leaderboard 1</Link>
-           </MenuItem>
-        <MenuItem onClick={handleCloseBtns}>
-        <Link className={classes.linkMenu} to="/leaderboard">Leaderboard 2</Link>
-          </MenuItem>
-        
-      </Menu> */}
-    {/* </div> */}
+         
     
      
     <Button className={classes.quizBtn} aria-controls="simple-menu" aria-haspopup="true" >
@@ -311,7 +293,7 @@ const handleChange = (event) => {
               <Link to="/how-to-play">
               <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}> Quiz 2</button>
               </Link>
-            {/* <ListItemText primary="Quiz 2" /> */}
+             
             
           </ListItem>
         </List>
@@ -360,18 +342,21 @@ const handleChange = (event) => {
         <>
              <Route exact path="/" component={Home}/>
              <Route path="/quiz1" component={QuizOne}/>
-             <Route path="/result" component={Result}/>
-             <Route path="/countdown" component={CountDown}/>
+             <Route path="/result-1" component={ResultOne}/>
+             <Route path="/result-2" component={ResultTwo}/>
+             <Route path="/countdown-2"component={CountDownTwo}/>
+             <Route path="/countdown-1"component={CountDownOne}/>
              <Route path="/leaderboard" component={Leaderboard}/>
-             <Route path="/login" component={Login}/>
+             <Route path="/leaderboard-2"component={LeaderboardTwo}/>
+             <Route path="/login" component={LogIn}/>
              <Route path="/userinfo" component={UserInfo}/>
              <Route path="/how-to-play" component={HowToPlay}/>
              <Route path="/how-to-play-2" component={HowToPlayTwo}/>
              <Route path="/signin" component={SignIn}/>
              <Route path="/signup" component={SignUp}/>
              <Route path="/profile" component={Profile}/>
-             <Route path="/leaderboard-2"component={LeaderboardTwo}/>
-             <Route path="/countdown-2"component={CountDownTwo}/>
+             
+             
              
  
          </>

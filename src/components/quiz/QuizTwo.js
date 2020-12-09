@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react'
-
 import './quiz.css'
-import Result from './Result'
-import ProgressBar from './ProgressBar'
+import ResultTwo from '../result/ResultTwo'
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import AlarmOffIcon from '@material-ui/icons/AlarmOff';
 function QuizTwo({ quizTwoData }) {
+
+  const[isMute,setIsMute] = useState(true)
+  //Sound Handling
+  const handleSoundOff =()=>{
+    setIsMute(false);
+  }
+  const handleSoundOn =()=>{
+    setIsMute(true);
+  }
   let sound = new Audio("../../assets/sounds/rightans.mp3");
   let wrong = new Audio('../../assets/sounds/wrongans.mp3');
   /**
@@ -69,7 +78,7 @@ function QuizTwo({ quizTwoData }) {
     console.log(ansLetter);
     console.log(correctAnswerLetters[currentIndex]);
     if (ansLetter === correctAnswerLetters[currentIndex]) {
-      playCorrect();
+    isMute &&  playCorrect();
 
       setPoint(point + 1);
 
@@ -88,7 +97,7 @@ function QuizTwo({ quizTwoData }) {
 
       }
     } else {
-      playWrong();
+     isMute && playWrong();
       setRightBtn(false);
 
     }
@@ -117,63 +126,97 @@ function QuizTwo({ quizTwoData }) {
 
 
 
-  }, [questionIndex])
+  }, [questionIndex ]);
+
+  //Progress bar handle
+  const[style,setStyle]=useState(null)
+const[dwidth,setDwidth]=useState(300);
+ useEffect(()=>{
+      const timer = 
+      dwidth > 0 && setInterval(()=> setDwidth(dwidth - 300/120),1000)
+      return()=>{
+          const shape = {
+              backgroundColor:'yellow',
+              width:`${dwidth}px`,
+              height:'100%'
+          }  
+          setStyle(shape)
+        clearInterval(timer)}
+ },[dwidth]);
+ console.log(dwidth);
 
   return (
     <>
 
       {
-        questionIndex === quizData.length ? (<Result numberOfCorrectAns={numberOfCorrectAns} point={point} quizData={quizData} />) : <div className="quiz">
+        questionIndex === quizData.length ? (<ResultTwo numberOfCorrectAns={numberOfCorrectAns} point={point} quizData={quizData} />) : <div className="quiz">
           <div className="quiz-content">
-            <ProgressBar />
-            <button className="button">{point}</button>
+           <div className="quiz-part">
+           {
+           dwidth < 1 ? <ResultTwo  numberOfCorrectAns={numberOfCorrectAns} point={point} quizData={quizData}  /> : <div style={{height:'5px',width:'300px',backgroundColor:'#333'}} className="progress-bar">
+           <div style={style}  >
+                
+</div>
 
-            <p>{quizData[questionIndex].question}</p>
+</div> 
+       }
+            {
+            isMute ?  <AccessAlarmIcon style={{color:'yellow',marginLeft:'10px',marginTop:'-10px',cursor:'pointer'}} onClick={handleSoundOff} /> : 
+            <AlarmOffIcon style={{color:'yellow',marginLeft:'10px',marginTop:'-10px',cursor:'pointer'}} onClick={handleSoundOn}/>
+          }
+           </div>
+           { dwidth <1 ? '' :<>
 
+           <button className="button">{point}</button>
 
-            {/* Answer Input Area */}
-            <div className="quizArea">
-              <div className="quizArea__blank">
-
-                {
-
-                  quizData[questionIndex].question.split("").map((letter, index) => (
-
-
-                    letter == "_" ? (
-                      <div
-                        className="quizArea__blank__answerLetter"
-                        key={index}>
-                        {tempAnsLetters[underscoreCounter++]}
-                      </div>
-                    ) :
-                      <p>{letter == " " ? (<p>&nbsp;</p>) : letter}</p>
-
-                  ))
-
-                }
+          
 
 
+{/* Answer Input Area */}
+<div className="quizArea">
+  <div className="quizArea__blank">
+
+    {
+
+      quizData[questionIndex].question.split("").map((letter, index) => (
 
 
-              </div>
+        letter === "_" ? (
+          <div
+            className="quizArea__blank__answerLetter"
+            key={index}>
+            {tempAnsLetters[underscoreCounter++]}
+          </div>
+        ) :
+          <p>{letter === " " ? (<p>&nbsp;</p>) : letter}</p>
 
-              {/* Question Button Area */}
-              <div className="quizArea__letterBtnArea">{tempQuestionBtnLetters.map((letter, index) => (
-                <button
-                  disabled={letter === ""}
-                  className={letter === "" ? "rotate-center" : "quizArea__letterBtnArea__btn " && rightBtn ? 'quizArea__letterBtnArea__btn' : ' shake'}
-                  key={index}
-                  onClick={() => submitAns(letter, index)}>
+      ))
 
-                  {letter}
-
-                </button>))}
-              </div>
-            </div>
+    }
 
 
-            {/* <button className="sign-out" onClick={()=>firebase.auth().signOut()}>Sign Out</button> */}
+
+
+  </div>
+
+  {/* Question Button Area */}
+  <div className="quizArea__letterBtnArea">{tempQuestionBtnLetters.map((letter, index) => (
+    <button
+      disabled={letter === ""}
+      className={letter === "" ? "rotate-center" : "quizArea__letterBtnArea__btn " && rightBtn ? 'quizArea__letterBtnArea__btn' : ' shake'}
+      key={index}
+      onClick={() => submitAns(letter, index)}>
+
+      {letter}
+
+    </button>))}
+  </div>
+</div>
+
+            </>}
+            
+
+           
           </div>
         </div>}
 

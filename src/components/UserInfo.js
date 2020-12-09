@@ -1,7 +1,7 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import {useAuth} from './context/AuthContext'
 import{useHistory} from 'react-router-dom'
-import './auth/signup.css'
+ 
 export default function UserInfo() {
   const history=useHistory()
  const[input,setInput]=useState('');
@@ -18,7 +18,7 @@ export default function UserInfo() {
        history.push('/profile')
     }
    setInput('')
-    console.log(currentUser);
+   
 
     
   }
@@ -26,7 +26,7 @@ export default function UserInfo() {
   return (
      <div style={{height:'90vh',display:'flex',marginTop:'50px'}}> 
 
-    <form onSubmit={onSubmit}>
+    <form className="form" onSubmit={onSubmit}>
       <label htmlFor="name">Enter Profile Name</label>
       <input style={{backgroundColor:'#fff'}} type="text" value={input} onChange={inputHandler}/>
       <button className="btn">Submit</button>

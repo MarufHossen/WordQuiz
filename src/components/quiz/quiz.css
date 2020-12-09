@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .quiz {
+  font-family: 'Poppins',sans-serif;
+  
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  /* height: 90vh; */
   margin-top: 40px;
 }
 .quiz-content {
@@ -13,6 +17,12 @@
   /* padding: 20px; */
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+}
+ 
+.quiz-part {
+  display:flex;
+   
 }
 .input-content {
   margin: auto;
@@ -31,6 +41,8 @@
 .ques {
   font-size: 20px;
   text-align: center;
+  margin-left:auto;
+  margin-right:auto
 }
 .ans-input {
   width: 40px;
@@ -82,11 +94,14 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width:600px;
 }
 
 .quizArea__blank {
   display: flex;
   flex-direction: row;
+  
+ 
 }
 
 .quizArea__blank__answerLetter {
@@ -187,4 +202,31 @@ input {
     transform: rotate(360deg);
     background-color: transparent;
   }
+}
+
+
+@media only screen and (max-width:668px) {
+  
+  .quizArea{
+        width:400px;
+  }
+  .quizArea__blank__answerLetter,.quizArea__letterBtnArea__btn,.shake {
+       width:30px;
+       height:30px;
+       border-radius:2px;
+       
+  }
+}
+@media only screen and (max-width:400px) {
+
+  .quiz-content {
+    width:90%;
+  }
+  .quizArea {
+    width:90%;
+  }
+  .quizArea__letterBtnArea {
+    margin-left:20px;
+  }
+
 }

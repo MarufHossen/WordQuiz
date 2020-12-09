@@ -2,16 +2,23 @@
 import React, { useState, useEffect } from 'react'
 import './quiz.css'
 import { BsFillForwardFill } from 'react-icons/bs';
-import ProgressBar from './ProgressBar'
-import Result from './Result';
+import ResultOne from '../result/ResultOne'
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import AlarmOffIcon from '@material-ui/icons/AlarmOff';
+ 
+ 
 
 // import db from '../Fire'
 function QuizOne({ quizOneData }) {
+  
   let sound = new Audio("../../assets/sounds/rightans.mp3");
   let wrong = new Audio('../../assets/sounds/wrongans.mp3');
-
+  
+  const[isMute,setIsMute] = useState(true);
+   
 
   const quizData = quizOneData;
+  console.log(quizData);
 
   /**
    * Playing Sound When Correct Button Pressed
@@ -40,10 +47,7 @@ function QuizOne({ quizOneData }) {
   const [tempQuestionBtnLetters, setTempQuestionLetters] = useState([])
   const [correctAnswerLetters, setCorrectAnswerLetters] = useState([])
   const [rightBtn, setRightBtn] = useState(true);
-  // console.log(tempAnsLetters);
-  // console.log(tempQuestionBtnLetters);
-  // console.log(correctAnswerLetters);
-
+  
   //
 
   /**
@@ -53,7 +57,7 @@ function QuizOne({ quizOneData }) {
    */
   const submitAns = (ansLetter, ansLetterIndex) => {
     if (ansLetter === correctAnswerLetters[currentIndex]) {
-      playCorrect();
+       isMute && playCorrect();
 
       setPoint(point + 1);
 
@@ -72,7 +76,7 @@ function QuizOne({ quizOneData }) {
 
       }
     } else {
-      playWrong();
+      isMute &&  playWrong();
       setRightBtn(false);
 
     }
@@ -119,7 +123,7 @@ function QuizOne({ quizOneData }) {
    * The function will be call to go next question
    */
   const goToNext = () => {
-    if (questionIndex < 3) {
+    if (questionIndex < quizData.length) {
       resetCurrentStage();
       setQuestionIndex(questionIndex + 1);
       // setPoint(point + 1);
@@ -135,9 +139,7 @@ function QuizOne({ quizOneData }) {
     setPoint(point);
 
     console.log(passedQuestionIndexList);
-    // console.log(questionIndex);
-
-    //  }
+     
 
 
   }
@@ -158,49 +160,93 @@ function QuizOne({ quizOneData }) {
 
 
   }, [questionIndex])
+
+  //Sound Handling
+   const handleSoundOff =()=>{
+     setIsMute(false);
+   }
+   const handleSoundOn =()=>{
+     setIsMute(true);
+   }
+
+   //Progress bar handle
+   const[style,setStyle]=useState(null)
+const[dwidth,setDwidth]=useState(300);
+ useEffect(()=>{
+      const timer = 
+      dwidth > 0 && setInterval(()=> setDwidth(dwidth - 300/120),1000)
+      return()=>{
+          const shape = {
+              backgroundColor:'yellow',
+              width:`${dwidth}px`,
+              height:'100%'
+          }  
+          setStyle(shape)
+        clearInterval(timer)}
+ },[dwidth]);
+ 
   return (
     <>
-      {questionIndex === quizData.length ? (<Result numberOfCorrectAns={numberOfCorrectAns} point={point} passedQuestionIndexList={passedQuestionIndexList} quizData={quizData} />) : <div className="quiz">
+      {questionIndex === quizData.length ? (<ResultOne numberOfCorrectAns={numberOfCorrectAns} point={point} passedQuestionIndexList={passedQuestionIndexList} quizData={quizData} />) : <div className="quiz">
         <div className="quiz-content">
-          <ProgressBar />
-          <button className="button">{point}</button>
+          <div className="quiz-part">
+          {
+           dwidth < 1 ? <ResultOne  numberOfCorrectAns={numberOfCorrectAns} point={point} passedQuestionIndexList={passedQuestionIndexList} quizData={quizData}/> : <div style={{height:'5px',width:'300px',backgroundColor:'#333'}} className="progress-bar">
+           <div style={style}  >
+                
+</div>
 
-          <p>{quizData[questionIndex].question}</p>
-
-
-          {/* Answer Input Area */}
-          <div className="quizArea">
-            <div className="quizArea__blank">
-
-              {correctAnswerLetters.map((letter, index) => (
-
-                <div
-                  className="quizArea__blank__answerLetter"
-                  key={index}>
-                  {tempAnsLetters[index]}
-                </div>
-              ))
-              }
-
-            </div>
-
-            {/* Question Button Area */}
-            <div className="quizArea__letterBtnArea">{tempQuestionBtnLetters.map((letter, index) => (
-              <button
-                disabled={letter === ""}
-                className={letter === "" ? "rotate-center" : "quizArea__letterBtnArea__btn " && rightBtn ? 'quizArea__letterBtnArea__btn' : ' shake'}
-                key={index}
-                onClick={() => submitAns(letter, index)}>
-
-                {letter}
-
-              </button>))}
-            </div>
+</div> 
+       
+          }
+          {
+            isMute ?  <AccessAlarmIcon style={{color:'yellow',marginLeft:'10px',marginTop:'-10px',cursor:'pointer'}} onClick={handleSoundOff} /> : 
+            <AlarmOffIcon style={{color:'yellow',marginLeft:'10px',marginTop:'-10px',cursor:'pointer'}} onClick={handleSoundOn}/>
+          }
+      
+          
           </div>
+          {
+            dwidth < 1 ? '' : <> <button className="button">{point}</button>
 
-          <button className="btn-icon" onClick={() => passQues(questionIndex)}>
-            <BsFillForwardFill />
-          </button>
+            <p className="ques" >{quizData[questionIndex].question}</p>
+  
+  
+            {/* Answer Input Area */}
+            <div className="quizArea">
+              <div className="quizArea__blank">
+  
+                {correctAnswerLetters.map((letter, index) => (
+  
+                  <div
+                    className="quizArea__blank__answerLetter"
+                    key={index}>
+                    {tempAnsLetters[index]}
+                  </div>
+                ))
+                }
+  
+              </div>
+  
+              {/* Question Button Area */}
+              <div className="quizArea__letterBtnArea">{tempQuestionBtnLetters.map((letter, index) => (
+                <button
+                  disabled={letter === ""}
+                  className={letter === "" ? "rotate-center" : "quizArea__letterBtnArea__btn " && rightBtn ? 'quizArea__letterBtnArea__btn' : ' shake'}
+                  key={index}
+                  onClick={() => submitAns(letter, index)}>
+  
+                  {letter}
+  
+                </button>))}
+              </div>
+            </div>
+  
+            <button className="btn-icon" onClick={() => passQues(questionIndex)}>
+              <BsFillForwardFill />
+            </button> </>
+          }
+           
           {/* <button className="sign-out" onClick={()=>firebase.auth().signOut()}>Sign Out</button> */}
         </div>
       </div>}

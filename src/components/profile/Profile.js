@@ -1,11 +1,16 @@
 import React from 'react'
-import {useAuth} from './context/AuthContext'
+import {useAuth} from '../context/AuthContext'
 import './profile.css'
+ 
 
 function Profile() {
     const{currentUser}=useAuth();
-    console.log(currentUser);
-    // console.log(handleUserCreated);
+    
+    
+  
+     
+   
+     
     return (
         
         <div className="profile">
@@ -19,6 +24,8 @@ function Profile() {
              <div className="email">
              <h2> <strong>Email:</strong>{currentUser && currentUser.email}</h2>
              </div>
+             
+             
              </div>
         </div>
          

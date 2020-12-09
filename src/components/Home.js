@@ -1,5 +1,5 @@
- import React, { useState,useEffect } from 'react'
- import {db} from '../Fire'
+import React, { useState,useEffect } from 'react'
+import {db} from '../Fire'
  import Button from '@material-ui/core/Button'
  
 import './home.css';
@@ -26,20 +26,12 @@ function Home() {
         <div className="home">
             <div className="sidebar-left">
             
-               {/* <li>
-                   <a href="#">Menu</a>
-               </li>
-               <li>
-                   <a href="#">Menu</a>
-               </li>
-               <li>
-                   <a href="#">Menu</a>
-               </li> */}
+               
                {
                    leftSidebarElements.map((data)=>(
-                       <>
+                       <div className="list">
                        <Button style={{marginBottom:'10px',width:'100%'}}><Link to="/">{data.data.menu}</Link></Button>
-                       </>
+                       </div>
                    ))
                }
             
@@ -66,9 +58,9 @@ function Home() {
             
             {
                    rightSidebarElements.map((data)=>(
-                       <>
+                       <div className="list">
                        <Button style={{marginBottom:'10px',width:'100%'}}><Link to="/">{data.data.menu}</Link></Button>
-                       </>
+                       </div>
                    ))
                }
             

@@ -4,6 +4,12 @@
 h1{
     margin-top: -20px;
 }
-form{
+.form{
     margin-top: -15px;
+    width:400px;
+    background-color:#be5ed4;
+}
+.error{
+    color:#fff;
+    text-align:center;
 }

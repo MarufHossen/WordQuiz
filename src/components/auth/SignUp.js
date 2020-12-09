@@ -1,9 +1,8 @@
- 
 
 import React,{useRef,useState} from 'react'
 import {useAuth} from '../context/AuthContext'
-import {useHistory,Link} from 'react-router-dom' 
-import {FormControl,InputLabel,Input,Button} from '@material-ui/core'
+import {useHistory} from 'react-router-dom' 
+ 
 import './signup.css'
 function SignUp() {
     const nameRef =useRef();
@@ -26,13 +25,10 @@ function SignUp() {
          if(passwordRef.current.value !== 
             passwordConfirmRef.current.value){
             return setError('Passwords do not match')
-            console.log(error);
+          
 
             }
-        // if(password !== confirm){
-        //     return setError('Passwords do not match')
-            
-        // }
+        
             try{
                 setError('')
                 setLoading(true)
@@ -44,11 +40,7 @@ function SignUp() {
             setLoading(false)
         
     }
-    console.log(name);
-    console.log(email);
-    console.log(password);
-    console.log(confirm);
-    console.log(error);
+   
     return (
         <div className="container">
               <h1>Sign Up</h1>
@@ -62,23 +54,7 @@ function SignUp() {
                           <label htmlFor="text">Enter Name</label>
                          <input type="text"  ref={nameRef}  />
                     </div>
-                    {/* <FormControl>
-                        <InputLabel style={{color:'#fff'}}>Enter Name</InputLabel>
-                        <Input value={name} onChange={e=>setName(e.target.value)} />
-                    </FormControl>
-                    <FormControl>
-                        <InputLabel style={{color:'#fff'}}>Enter Email</InputLabel>
-                        <Input value={email} onChange={e=>setEmail(e.target.value)} />
-                    </FormControl>
-                    <br/>
-                    <FormControl>
-                        <InputLabel style={{color:'#fff'}}>Enter Password</InputLabel>
-                        <Input   value={password} onChange={e=>setPassword(e.target.value)} />
-                    </FormControl>
-                    <FormControl>
-                        <InputLabel style={{color:'#fff'}}>Confirm Password</InputLabel>
-                        <Input   value={confirm} onChange={e=>setConfirm(e.target.value)} />
-                    </FormControl> */}
+                   
 
 
                    
@@ -100,7 +76,7 @@ function SignUp() {
                        
                        
                         <button className="btn">Sign Up</button>
-                      {/* <Button  className="btn" variant="contained" color="secondary"> Sign Up</Button> */}
+                     
             </form>
             
         </div>
