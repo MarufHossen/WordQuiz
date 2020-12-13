@@ -35,7 +35,7 @@ function ResultTwo({point,numberOfCorrectAns}) {
         return () => {
             
         }
-    }, [ currentUser && currentUser.displayName  ])
+    }, [ currentUser ,point  ])
     
     
 

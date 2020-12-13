@@ -51,26 +51,13 @@ function QuizTwo({ quizTwoData }) {
     }
     return result;
   }
-  /**
-   * Shuffling the answer string to randomize the letter
-   * @returns array
-   * @param string 
-   */
-  const shuffle = (string) => {
-    let randomLetters = getRandomLetters(5);
-    let randomLetterList = randomLetters.split("");
-    let answerLetterList = string.split("");
-    let jointList = answerLetterList.concat(randomLetterList);
-    console.log(jointList);
-    jointList.sort(() => Math.random() - 0.5);
-    return jointList;
-  }
+  
 
   const resetCurrentStage = () => {
     setTempAnsLetters([])
     setTempQuestionLetters([])
     setCurrentIndex(0);
-    // setAnswerWord(shuffle(quizData[0].correctAnswer))
+    
   }
 
   const submitAns = (ansLetter, ansLetterIndex) => {
@@ -113,6 +100,21 @@ function QuizTwo({ quizTwoData }) {
   }
 
   useEffect(() => {
+      /**
+   * Shuffling the answer string to randomize the letter
+   * @returns array
+   * @param string 
+   */
+  const shuffle = (string) => {
+    let randomLetters = getRandomLetters(5);
+    let randomLetterList = randomLetters.split("");
+    let answerLetterList = string.split("");
+    let jointList = answerLetterList.concat(randomLetterList);
+    console.log(jointList);
+    jointList.sort(() => Math.random() - 0.5);
+    return jointList;
+  }
+
     if (questionIndex < quizData.length) {
       setCorrectAnswerLetters(quizData[questionIndex].answer.split(""))
       setTempQuestionLetters(shuffle(quizData[questionIndex].answer));
@@ -125,7 +127,7 @@ function QuizTwo({ quizTwoData }) {
 
 
 
-  }, [questionIndex ]);
+  }, [questionIndex,quizData]);
 
   //Progress bar handle
   const[style,setStyle]=useState(null)

@@ -10,9 +10,7 @@ function SignIn() {
      
     const {login }=useAuth()
      const [error,setError] =useState('')
-     const[loading,setLoading]=useState(false);
-     const[email,setEmail]=useState('')
-     const[pass,setPass]=useState('')
+     ;
      const history =useHistory()
       
   async  function handleSubmit(e){
@@ -21,17 +19,17 @@ function SignIn() {
          
             try{
                 setError('')
-                setLoading(true)
+              
             await   login(emailRef.current.value,passwordRef.current.value)
              
                 history.push('/')
             }catch{
                      setError('Failed to sign in')
             }
-            setLoading(false)
+           
         
     }
-    console.log(email);
+    
     return (
         <div className="container">
              <h1 style={{color:'#be5ed4'}}>Login</h1>
