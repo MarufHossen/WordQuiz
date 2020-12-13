@@ -11,11 +11,6 @@ function SignUp() {
     const passwordConfirmRef=useRef()
     const {signup }=useAuth()
      const [error,setError] =useState('')
-     const[loading,setLoading]=useState(false)
-     const[name,setName]=useState('')
-     const[email,setEmail]=useState('')
-     const[password,setPassword]=useState('')
-     const[confirm,setConfirm]=useState('')
      const history =useHistory()
       
   async  function handleSubmit(e){
@@ -31,13 +26,13 @@ function SignUp() {
         
             try{
                 setError('')
-                setLoading(true)
+                 
             await   signup(emailRef.current.value,passwordRef.current.value)
                 history.push('/userinfo')
             }catch{
                      setError('Failed to create an account')
             }
-            setLoading(false)
+            
         
     }
    

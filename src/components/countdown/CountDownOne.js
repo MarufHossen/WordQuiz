@@ -9,9 +9,7 @@ function CountDownOne() {
 
     const[isMute,setIsMute] = useState(true);
 
-
-  let countdown = new Audio('../../assets/sounds/CountDown.mp3');
-  const count = () => countdown.play();
+ 
    const[counter,setCounter] = useState(3);
    
   const [quizData, setQuizData] = useState([]);
@@ -20,14 +18,17 @@ function CountDownOne() {
       setQuizData(snapshot.docs.map(doc => doc.data()))
     })
   }, [])
+    
  useEffect(()=>{
-  counter  > 0  && count()
+  let countdown = new Audio('../../assets/sounds/CountDown.mp3');
+  const count = () => countdown.play();
+  counter  > 0  && count() 
      const timer = 
      counter > 0 && setInterval(() => setCounter(counter - 1)
      
      , 1000);
       
-      
+     
       
     
      return()=>clearInterval(timer);

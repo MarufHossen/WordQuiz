@@ -7,39 +7,73 @@ import './result.css'
 function ResultOne({point,passedQuestionIndexList, quizData,numberOfCorrectAns}) {
      
     const{currentUser}=useAuth();
+    // const[leaderboardData,setLeaderboardData] = useState([])
+
     
     
 
     useEffect(() => {
+    //     function bubble_Sort(a)
+    //     {
+    //         var swapp;
+    //         var n = a.length-1;
+    //         var x=a;
+    //         do {
+    //             swapp = false;
+    //             for (var i=0; i < n; i++)
+    //             {
+    //                 if (x[i].score < x[i+1].score)
+    //                 {
+    //                    var temp = x[i];
+    //                    x[i] = x[i+1];
+    //                    x[i+1] = temp;
+    //                    swapp = true;
+    //                 }
+    //             }
+    //             n--;
+    //         } while (swapp);
+    //      return x; 
+    //     }
+    //      bubble_Sort( db.collection('QuizOneLeaderboard').onSnapshot(snapshot => {
+    //         setLeaderboardData(snapshot.docs.map(doc => doc.data()))
+    //       })) 
+          
+    //       let sortedLeaderboard = bubble_Sort(leaderboardData);
+           
+    //  console.log(sortedLeaderboard);
 
+            
         if(currentUser === null) {
             return ;
         } else {
-
-            const leaderboard = db.collection('QuizOneLeaderboard').doc(currentUser.uid);
-             
-            leaderboard.get().then(snap => {
-                  
                  
+            const leaderboard = db.collection('QuizOneLeaderboard').doc(currentUser.uid);
+           
+           
+            
+            leaderboard.get().then(snap => {
+                
+                  
+                  
                 // const previousScore = snap.data().score;
                  
                 // if (previousScore < point) {
                     leaderboard.set({
                         'name': currentUser.displayName,
                         'score': point,
-                        
+                         
                       });
                 // }
            
-    
+                
           }) 
         }
-          
+         
              
         return () => {
             
         }
-    }, [ currentUser && currentUser.displayName  ])
+    }, [point,currentUser])
     
     
 
@@ -52,8 +86,8 @@ function ResultOne({point,passedQuestionIndexList, quizData,numberOfCorrectAns})
                  <table>
                      <tr>
                          <td>Renew Highest Ranking:</td>
-                         {/* TODO:: Firebase theke ashbe data. erpor check korte hobe */}
-                         <td>120</td>
+                       
+    <td></td>
 
                      </tr>
                      <tr>

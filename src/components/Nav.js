@@ -153,11 +153,11 @@ export default function Nav() {
   const [open, setOpen] = React.useState(false);
   const[listOpen,setListOpen]=useState(true);
   const[listOpens,setListOpens]=useState(true);
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+   
+  // const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchor, setAnchor] = React.useState(null);
-  const [anchors, setAnchors] = React.useState(null);
-  const opens = Boolean(anchorEl);
+   
+  // const opens = Boolean(anchorEl);
  
    
 
@@ -168,18 +168,7 @@ export default function Nav() {
   const handleLists=()=>{
     setListOpens(!listOpens)
 }
-
-// const handleChange = (event) => {
-//     setAuth(event.target.checked);
-//   };
  
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };   
-  
-  // const handleMenu = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
    
   const handleClick = (event) => {
     setAnchor(event.currentTarget);

@@ -66,6 +66,7 @@ function Leaderboard() {
          <tr className="tr">
              <td>{data.name}</td>
              <td>{data.score}</td>  
+              
         </tr> 
                 
                 ) 

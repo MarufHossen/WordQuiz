@@ -18,7 +18,7 @@ function QuizOne({ quizOneData }) {
    
 
   const quizData = quizOneData;
-  console.log(quizData);
+   
 
   /**
    * Playing Sound When Correct Button Pressed
@@ -93,20 +93,20 @@ function QuizOne({ quizOneData }) {
     return result;
   }
 
-  /**
-   * Shuffling the answer string to randomize the letter
-   * @returns array
-   * @param string 
-   */
-  const shuffle = (string) => {
-    let randomLetters = getRandomLetters(5);
-    let randomLetterList = randomLetters.split("");
-    let answerLetterList = string.split("");
-    let jointList = answerLetterList.concat(randomLetterList);
-    console.log(jointList);
-    jointList.sort(() => Math.random() - 0.5);
-    return jointList;
-  }
+  // /**
+  //  * Shuffling the answer string to randomize the letter
+  //  * @returns array
+  //  * @param string 
+  //  */
+  // const shuffle = (string) => {
+  //   let randomLetters = getRandomLetters(5);
+  //   let randomLetterList = randomLetters.split("");
+  //   let answerLetterList = string.split("");
+  //   let jointList = answerLetterList.concat(randomLetterList);
+  //   console.log(jointList);
+  //   jointList.sort(() => Math.random() - 0.5);
+  //   return jointList;
+  // }
 
 
   /**
@@ -143,10 +143,28 @@ function QuizOne({ quizOneData }) {
 
 
   }
-
+ 
 
   useEffect(() => {
 
+    
+  
+      /**
+   * Shuffling the answer string to randomize the letter
+   * @returns array
+   * @param string 
+   */
+  const shuffle = (string) => {
+    let randomLetters = getRandomLetters(5);
+    let randomLetterList = randomLetters.split("");
+    let answerLetterList = string.split("");
+    let jointList = answerLetterList.concat(randomLetterList);
+    console.log(jointList);
+    jointList.sort(() => Math.random() - 0.5);
+    return jointList;
+  }
+
+    
     if (questionIndex < quizData.length) {
       setCorrectAnswerLetters(quizData[questionIndex].answer.split(""))
       setTempQuestionLetters(shuffle(quizData[questionIndex].answer));
@@ -158,8 +176,7 @@ function QuizOne({ quizOneData }) {
 
 
 
-
-  }, [questionIndex])
+  }, [questionIndex,quizData])
 
   //Sound Handling
    const handleSoundOff =()=>{
@@ -247,7 +264,7 @@ const[dwidth,setDwidth]=useState(300);
             </button> </>
           }
            
-          {/* <button className="sign-out" onClick={()=>firebase.auth().signOut()}>Sign Out</button> */}
+          
         </div>
       </div>}
     </>
