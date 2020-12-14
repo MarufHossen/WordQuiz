@@ -209,9 +209,7 @@ const[dwidth,setDwidth]=useState(300);
           <div className="quiz-part">
           {
            dwidth < 1 ? <ResultOne  numberOfCorrectAns={numberOfCorrectAns} point={point} passedQuestionIndexList={passedQuestionIndexList} quizData={quizData}/> : <div style={{height:'5px',width:'300px',backgroundColor:'#333'}} className="progress-bar">
-           <div style={style}  >
-                
-</div>
+           <div style={style}> </div>
 
 </div> 
        

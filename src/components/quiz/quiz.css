@@ -23,6 +23,7 @@
  
 .quiz-part {
   display:flex;
+  margin-top:10px;
    
 }
 .input-content {
@@ -107,6 +108,19 @@ input {
 }
 
 .quizArea__blank__answerLetter {
+  margin: 10px;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quizArea__blank__answerLetters {
   margin: 10px;
   height: 50px;
   width: 50px;
@@ -233,6 +247,15 @@ input {
   .quizArea__letterBtnArea {
     margin-left:20px;
   }
-  
+   
+   .quizArea__blank__answerLetters {
+    width:15px;
+    height:15px;
+    border-radius: 2px;
+    margin-top:16px;
+  }
+  .quizArea__blank p {
+    font-size:small;
+  }
   
 }

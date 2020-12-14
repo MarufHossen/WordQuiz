@@ -184,7 +184,7 @@ const[dwidth,setDwidth]=useState(300);
 
         letter === "_" ? (
           <div
-            className="quizArea__blank__answerLetter"
+            className="quizArea__blank__answerLetters"
             key={index}>
             {tempAnsLetters[underscoreCounter++]}
           </div>

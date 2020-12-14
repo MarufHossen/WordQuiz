@@ -8,7 +8,7 @@
   grid-template-areas:
     "sidebar-left  quiz quiz sidebar-right"
     "footer footer footer footer";
-  background: #efcded;
+  background: #efcded !important;
 }
 .sidebar-left {
   width: 200px;

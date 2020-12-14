@@ -41,7 +41,8 @@ componentDidMount=()=>{
                      
 
                      <StyledFirebaseAuth 
-                     style={{width:'200px'}}
+                    //  style={{width:'100px'}}
+                    className="formup"
                       uiConfig={this.uiConfig}
                       firebaseAuth={firebase.auth()}
                       

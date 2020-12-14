@@ -2,3 +2,14 @@
     height:92vh;
     overflow: hidden;
 }
+
+.formup{
+    width:200px;
+}
+
+@media only screen and (max-width: 400px){
+    .formup {
+        width:100px;
+        margin-left:-50px;
+    }
+}
