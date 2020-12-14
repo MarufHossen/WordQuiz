@@ -27,7 +27,7 @@ function LeaderboardTwo() {
      }
      console.log(rankList);
     return (
-        <>
+        <div className="leaderbaord">
             <Button variant="contained" style={{background:'#be5ed4',width:"200px",marginTop:'20px',marginLeft:'20px'}}>
                  <Link to="/leaderboard">Leaderboard One</Link>
             </Button>
@@ -41,13 +41,13 @@ function LeaderboardTwo() {
                 </thead>
                 <tbody>
                     {rankList.map((r)=>(
-                        <tr>
+                        <tr className="tr">
                             <td>{r}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <table className="table-2">
+            <table className="table-1">
                 <thead> 
                 <tr>
                       
@@ -60,7 +60,7 @@ function LeaderboardTwo() {
                 {list.map((data)=>(
                 
                                         
-         <tr>
+         <tr className="tr">
              <td>{data.name}</td>
              <td>{data.score}</td>  
         </tr> 
@@ -73,7 +73,7 @@ function LeaderboardTwo() {
             
         </div>
         </div>
-        </>
+        </div>
     )
 }
 

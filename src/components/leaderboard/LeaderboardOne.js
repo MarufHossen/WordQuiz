@@ -4,7 +4,7 @@ import './leaderboard.css'
 import {db} from '../../Fire'
 import {Link} from 'react-router-dom'
 import Button from '@material-ui/core/Button'
-function Leaderboard() {
+function LeaderboardOne() {
     const[datas,setDatas]=useState([]);
 
     useEffect(()=>{
@@ -81,4 +81,4 @@ function Leaderboard() {
     )
 }
 
-export default Leaderboard
+export default LeaderboardOne

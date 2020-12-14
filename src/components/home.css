@@ -13,7 +13,6 @@
 .sidebar-left {
   width: 200px;
   grid-area: sidebar-left;
-  /* height:100%; */
   background-color: #be5ed4;
   height: 90vh;
 }
@@ -21,7 +20,6 @@
 .sidebar-right {
   width: 200px;
   grid-area: sidebar-right;
-  /* height:100%; */
   background-color: #be5ed4;
 }
 .list {
@@ -79,7 +77,6 @@ Link {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 50px; */
   background: #efcded;
   color: #be5ed4;
   font-size: 24px;

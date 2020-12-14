@@ -9,10 +9,10 @@ import Home from './Home'
  import QuizOne from './quiz/QuizOne'
  import ResultOne from './result/ResultOne'
  import ResultTwo from './result/ResultTwo'
- 
+ import logo from './images/logo.png'
  import CountDownTwo from './countdown/CountDownTwo'
  import CountDownOne from './countdown/CountDownOne'
- import Leaderboard from './leaderboard/Leaderboard'
+ import LeaderboardOne from './leaderboard/LeaderboardOne'
  import LeaderboardTwo from './leaderboard/LeaderboardTwo'
  import LogIn from './Login';
  import UserInfo from './UserInfo'
@@ -40,6 +40,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ExpandLess from '@material-ui/icons/ExpandLess';
@@ -95,13 +96,20 @@ const useStyles = makeStyles((theme) => ({
   },
   quizButton:{
     [theme.breakpoints.down("sm")]:{
-         display:'none'
+        //  display:'none'
     },
       marginLeft: 'auto'
   },
   quizBtn:{
     [theme.breakpoints.down("sm")]:{
         display:'none'
+    },
+    marginLeft:'auto',
+      color:'#fff'
+  },
+  quizbtn:{
+    [theme.breakpoints.down("sm")]:{
+        // display:'none'
     },
     marginLeft:'auto',
       color:'#fff'
@@ -154,10 +162,9 @@ export default function Nav() {
   const[listOpen,setListOpen]=useState(true);
   const[listOpens,setListOpens]=useState(true);
    
-  // const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchor, setAnchor] = React.useState(null);
    
-  // const opens = Boolean(anchorEl);
+  
  
    
 
@@ -177,9 +184,7 @@ export default function Nav() {
   const handleCloseBtn = () => {
     setAnchor(null);
   };
-  // const handleCloseBtns = () => {
-  //   setAnchors(null);
-  // };
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -208,12 +213,14 @@ export default function Nav() {
             <MenuIcon />
           </IconButton>
           <Button   noWrap>
-            <Link className={classes.link} to="/">LOGO</Link>
+            <Link className={classes.link} to="/"> 
+            <img src={logo} alt="logo" width="30px"height="30px" />
+            </Link>
              
           </Button>
           <div className={ classes.quizButton}>
-      <Button className={classes.quizBtn} aria-controls="simple-menu"  aria-haspopup="true" onClick={handleClick}>
-        Quiz 
+      <Button className={classes.quizbtn} aria-controls="simple-menu"  aria-haspopup="true" onClick={handleClick}>
+        Quiz  < ArrowDropDownIcon />
       </Button>
       <Menu
         id="simple-menu"
@@ -235,7 +242,7 @@ export default function Nav() {
     
      
     <Button className={classes.quizBtn} aria-controls="simple-menu" aria-haspopup="true" >
-        <Link to="/leaderboard">Leaderboard</Link>
+        <Link to="/leaderboard-1">Leaderboard</Link>
       </Button>
     <Button className={classes.quizBtn} aria-controls="simple-menu" aria-haspopup="true" >
         ...
@@ -271,7 +278,7 @@ export default function Nav() {
             <Collapse in={listOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
           <ListItem button className={classes.nested}>
-             <Link to="/how-to-play">
+             <Link to="/how-to-play-1">
              {/* <ListItemText primary="Quiz 1" /> */}
              <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}> Quiz 1</button>
              
@@ -279,7 +286,7 @@ export default function Nav() {
             
           </ListItem>
           <ListItem button className={classes.nested}>
-              <Link to="/how-to-play">
+              <Link to="/how-to-play-2">
               <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}> Quiz 2</button>
               </Link>
              
@@ -294,7 +301,7 @@ export default function Nav() {
             <Collapse in={listOpens} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
           <ListItem button className={classes.nested}>
-             <Link to="/leaderboard">
+             <Link to="/leaderboard-1">
              {/* <ListItemText primary="Quiz 1" /> */}
              <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}> Leaderboard 1</button>
              
@@ -302,7 +309,7 @@ export default function Nav() {
             
           </ListItem>
           <ListItem button className={classes.nested}>
-              <Link to="/leaderboard">
+              <Link to="/leaderboard-2">
               <button  style={{backgroundColor:'transparent',textAlign:'center',width:'100%'}}> Leaderboard 2</button>
               </Link>
             
@@ -335,11 +342,11 @@ export default function Nav() {
              <Route path="/result-2" component={ResultTwo}/>
              <Route path="/countdown-2"component={CountDownTwo}/>
              <Route path="/countdown-1"component={CountDownOne}/>
-             <Route path="/leaderboard" component={Leaderboard}/>
+             <Route path="/leaderboard-1" component={LeaderboardOne}/>
              <Route path="/leaderboard-2"component={LeaderboardTwo}/>
              <Route path="/login" component={LogIn}/>
              <Route path="/userinfo" component={UserInfo}/>
-             <Route path="/how-to-play" component={HowToPlay}/>
+             <Route path="/how-to-play-1" component={HowToPlay}/>
              <Route path="/how-to-play-2" component={HowToPlayTwo}/>
              <Route path="/signin" component={SignIn}/>
              <Route path="/signup" component={SignUp}/>
