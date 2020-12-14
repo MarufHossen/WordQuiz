@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import firebase from 'firebase'
 import UserInfo from './UserInfo';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import './login.css'
  
   class SignUp extends Component {
 
@@ -28,7 +29,7 @@ componentDidMount=()=>{
     render() {
         return (
          
-              <div style={{height:'94vh',overflowX:'hidden'}}> 
+              <div className="login"> 
                 {this.state.isSignedIn ? (
                     <>
                     <UserInfo/>
@@ -40,6 +41,7 @@ componentDidMount=()=>{
                      
 
                      <StyledFirebaseAuth 
+                     style={{width:'200px'}}
                       uiConfig={this.uiConfig}
                       firebaseAuth={firebase.auth()}
                       

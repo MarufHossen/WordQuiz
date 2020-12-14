@@ -136,10 +136,10 @@ function ResultOne({point,passedQuestionIndexList, quizData,numberOfCorrectAns})
             
                  <div className="button-list">
                  <button className="BUTTON"> 
-                  <Link to="/how-to-play">Try again</Link>
+                  <Link to="/how-to-play-1">Try again</Link>
                   </button>
                   <button className="BUTTON">
-                      <Link to="/leaderboard">See Leaderboard</Link>
+                      <Link to="/leaderboard-1">See Leaderboard</Link>
                   </button>
               
                  </div>

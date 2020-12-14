@@ -29,7 +29,7 @@ function LeaderboardTwo() {
     return (
         <div className="leaderbaord">
             <Button variant="contained" style={{background:'#be5ed4',width:"200px",marginTop:'20px',marginLeft:'20px'}}>
-                 <Link to="/leaderboard">Leaderboard One</Link>
+                 <Link to="/leaderboard-1">Leaderboard One</Link>
             </Button>
             <div className="table">
         <div className="table-content">

@@ -13,3 +13,9 @@ h1{
     color:#fff;
     text-align:center;
 }
+
+@media only screen and (max-width: 400px)  {
+    .form {
+        width:250px;
+    }
+}

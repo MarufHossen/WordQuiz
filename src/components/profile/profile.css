@@ -6,6 +6,7 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    overflow-x:hidden;
      
 }
 .profile-info{
@@ -33,13 +34,14 @@ h1{
 
 @media only screen and (max-width: 400px){
     .profile-info{
-        width:100%;
-        background-color: transparent;
-        text-align: center;
+        width:100% !important;
+        /* background-color: transparent; */
+        text-align: start;
+        border-radius:0px;
          
     }
     h2 {
         color:#333 !important;
-        font-size: 20px;
+        font-size: 16px;
     }
 }

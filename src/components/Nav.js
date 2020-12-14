@@ -230,7 +230,7 @@ export default function Nav() {
         onClose={handleCloseBtn}
       >
         <MenuItem onClick={handleCloseBtn}>
-        <Link className={classes.linkMenu} to="/how-to-play">Quiz 1</Link>
+        <Link className={classes.linkMenu} to="/how-to-play-1">Quiz 1</Link>
            </MenuItem>
         <MenuItem onClick={handleCloseBtn}>
         <Link className={classes.linkMenu} to="/how-to-play-2">Quiz 2</Link>

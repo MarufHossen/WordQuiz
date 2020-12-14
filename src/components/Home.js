@@ -46,7 +46,7 @@ function Home() {
 
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas quisquam, quod nesciunt labore, nihil perferendis quaerat eaque sapiente maiores ratione sed, fugit expedita. Aspernatur illum accusantium itaque commodi minus similique!
                         </p>
-                        <Link to="/how-to-play" > <button className="Btn">
+                        <Link to="/how-to-play-1" > <button className="Btn">
                              Start
                              </button> </Link>
                          

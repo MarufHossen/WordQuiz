@@ -107,6 +107,10 @@ Link {
 
 @media only screen and (max-width: 400px) {
   .home {
-    height: 92vh;
+ 
+    height: 100vh;
+    grid-template-areas:
+    "quiz  quiz quiz quiz"
+    "footer footer footer footer";
   }
 }

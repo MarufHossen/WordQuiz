@@ -8,6 +8,7 @@
   align-items: center;
   /* height: 90vh; */
   margin-top: 40px;
+  overflow: hidden;
 }
 .quiz-content {
   width: 400px;
@@ -100,6 +101,7 @@ input {
 .quizArea__blank {
   display: flex;
   flex-direction: row;
+  /* width:200px; */
   
  
 }
@@ -220,13 +222,17 @@ input {
 @media only screen and (max-width:400px) {
 
   .quiz-content {
-    width:90%;
+    width:300px;
   }
   .quizArea {
-    width:90%;
+    width:280px;
+    margin:auto;
+    font-size:14px;
+  
   }
   .quizArea__letterBtnArea {
     margin-left:20px;
   }
-
+  
+  
 }
